@@ -11,7 +11,7 @@ export default function Card({
     <section
       title={title}
       className={classNames(styles.card, className)}
-      theme={theme}
+      data-theme={theme}
     >
       {children}
     </section>

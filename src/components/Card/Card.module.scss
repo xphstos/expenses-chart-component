@@ -2,11 +2,11 @@
   border-radius: 8px;
   padding: 1.5rem;
 
-  &[theme="pale-orange"] {
+  &[data-theme="pale-orange"] {
     background-color: var(--pale-orange);
   }
 
-  &[theme="orange"] {
+  &[data-theme="orange"] {
     background-color: var(--primary);
     color: var(--pale-orange);
   }

@@ -31,6 +31,7 @@ const Bar = ({ max, value, id, label }) => (
       className={classNames(styles.chartBar, {
         [`${styles.chartBarMax}`]: max === value,
       })}
+      role="progressbar"
       aria-valuemin={0}
       aria-valuemax={max}
       aria-valuenow={value}
