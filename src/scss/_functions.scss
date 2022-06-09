@@ -1,0 +1,43 @@
+@use "sass:math" as *;
+@use "sass:meta" as *;
+@use "sass:map" as *;
+@use "./colors" as *;
+
+// Unit Stripe
+@function strip($value) {
+  @if type-of($value) != "number" {
+    @error "Invalid `#{type-of($value)}` type. Choose a number type instead.";
+  } @else if type-of($value) == "number" and not is-unitless($value) {
+    @return div($value, ($value * 0 + 1));
+  }
+
+  @return $value;
+}
+
+// Get CSS Var
+@function v($name, $fallback: null) {
+  @if ($fallback) {
+    @return var(--#{$name}, #{$fallback});
+  } @else {
+    @return var(--#{$name});
+  }
+}
+
+// Get SCSS Color Var
+@function c($name, $theme: null) {
+  @if $theme {
+    @if has-key($theme, $name) {
+      @return get($theme, $name);
+    }
+  } @else {
+    @if has-key($colors, $name) {
+      @return get($colors, $name);
+    }
+  }
+  @return null;
+}
+
+// Fluid All the Things
+@function fluid-size($min: 10px, $max: 20px, $breakpoint: 768) {
+  @return clamp(#{$min}, (#{strip($max)} / #{$breakpoint}) * 100vw, #{$max});
+}

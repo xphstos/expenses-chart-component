@@ -1,0 +1,48 @@
+@use "./functions" as *;
+
+.balance {
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: center;
+}
+
+.spedingTotalValuePrevious,
+.spendingTotalTitle,
+.balanceTitle {
+  font-weight: normal;
+  font-size: fluid-size(16px, 18px, 520);
+  line-height: 1.5rem;
+}
+
+.spedingTotalValue,
+.spendingTitle,
+.balanceValue {
+  font-weight: bold;
+  font-size: fluid-size(24px, 32px, 520);
+}
+
+.balanceLogo {
+  width: fluid-size(60px, 72px, 520);
+  height: auto;
+}
+
+.spedingTotalValuePrevious small,
+.spendingTotalTitle {
+  opacity: 0.5;
+}
+
+.spendingTotalOverview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.spedingTotalValuePrevious {
+  text-align: right;
+  line-height: 1.333;
+
+  small {
+    display: block;
+  }
+}

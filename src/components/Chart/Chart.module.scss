@@ -1,0 +1,84 @@
+@use "../../scss/functions" as *;
+
+.chart {
+  padding-block: fluid-size(60px, 64px, 425) fluid-size(16px, 32px, 520);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: fluid-size(8px, 16px, 520);
+  border-bottom: 1px solid v("cream");
+  margin-bottom: fluid-size(16px, 32px, 520);
+
+  &Column {
+    flex: 1;
+    display: grid;
+    align-items: end;
+    gap: 0.5rem;
+    grid-template-rows: auto;
+    line-height: 1;
+    height: 12rem;
+    position: relative;
+
+    &:focus-within {
+      .chartTooltip {
+        transform: translate(-50%, -2.5rem);
+        opacity: 1;
+      }
+    }
+  }
+
+  &Bar {
+    height: v(value);
+    border-radius: fluid-size(4px, 8px, 520);
+    background: v(primary);
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease, height 0.5s ease-in-out;
+    margin-bottom: fluid-size(18px, 24px, 520);
+    will-change: height;
+
+    &:hover {
+      background-color: transparentize(c("primary"), 0.5);
+
+      .chartTooltip {
+        transform: translate(-50%, -2.5rem);
+        opacity: 1;
+      }
+    }
+
+    &Max {
+      background: v(secondary);
+
+      &:hover {
+        background-color: transparentize(c("secondary"), 0.5);
+      }
+    }
+  }
+
+  &Tooltip {
+    border-radius: fluid-size(4px, 8px, 520);
+    background-color: v(dark-brown);
+    color: v(pale-orange);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -2rem);
+    font-size: fluid-size(16px, 18px, 520);
+    padding: 0.5rem 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s linear, transform 0.3s ease-in-out;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &Label {
+    font-weight: normal;
+    font-size: fluid-size(14px, 16px, 520);
+    line-height: 1rem;
+    opacity: 0.5;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
